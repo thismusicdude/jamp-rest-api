@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/src/index.js",
+    "start": "ts-node src/index.ts",
     "lint": "eslint . --ignore-pattern './**/*.js'",
-    "generate-tests": "tsc && npx @openapitools/openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./generated",
+    "generate-tests": "npx @openapitools/openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./generated && tsc",
     "test": "cucumber-js"
   },
   "keywords": [],

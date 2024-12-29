@@ -1,0 +1,9 @@
+{
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "cucumber.glue": [
+        "dist/sw-module-tests/stepdefs/*.js",
+        "sw-module-tests/stepdefs/*.ts",
+    ]
+}

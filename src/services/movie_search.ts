@@ -19,7 +19,7 @@ export function searchForMovie (req: Request, res: Response, servicelocator: Ser
 }
 
 export function getMovie (req: Request, res: Response, movieList: MovieList): void {
-  const movieId = req.params.id;
+  const movieId = req.params.id as string;
 
   if (!movieList.has(movieId)) {
     res.status(404).send({

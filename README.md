@@ -67,12 +67,42 @@ This project provides a REST API for managing movie polls. Below is an overview 
 
 ---
 
+## .env File
+Here’s the section for your README in English, updated to reflect that the `COMPONENT` can be either "omdb" or "mock":
+
+---
+
+## Configuring the `.env` File
+
+To configure the environment variables for the application, you need to create a `.env` file in the project directory. This file contains important settings that the application will use during runtime. The `.env` file should contain the following variables:
+
+```env
+COMPONENT="<component-name>"
+OMDB_KEY="<OMDB key>"
+DEBUG="<mode>"
+```
+
+### Variable Explanations:
+
+- **`COMPONENT`**: Specifies the name of the API component being used. It can either be `omdb` for using the OMDB API or `mock` for using mock data. 
+- **`OMDB_KEY`**: Your personal API key for accessing the OMDB API. Replace `<OMDB key>` with your actual API key.
+- **`DEBUG`**: Controls the debug mode. Set the value to `"TEST"` if you are running the application in a test environment. This enables a new endpoint to clear all inner data.
+
+---
+
 ## Setup
 1. Clone the repository.
 2. Install dependencies via `npm install`.
 3. Start the server: `npm start`.
 
 ---
+
+## Testing
+1. All of the Setup steps in a separate shell
+2. Generate test environment: `npm run generate-tests`
+3. Start tests: `npm test`
+
+
 
 ## License
 This project is licensed under the MIT License.

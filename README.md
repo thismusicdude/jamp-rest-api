@@ -2,6 +2,9 @@
 
 This project provides a REST API for managing movie polls. Below is an overview of the available endpoints and their functionality.
 
+The main goal for this project is to try out the `service locator pattern` and serves also as a proof of concept for `openapi` client generation, 
+`pactum` and `cucumber-js` for software module tests in combination with `typescript`. 
+
 ---
 
 ## Endpoints

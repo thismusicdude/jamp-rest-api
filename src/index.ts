@@ -102,6 +102,7 @@ function initializeListener(webApp: Express, port: number): void {
 }
 
 // start server
+
 getComponentClass(componentName)
     .then((ComponentClass) => {
         const componentInstance = new ComponentClass();

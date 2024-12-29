@@ -1,3 +1,6 @@
+// retrieves movie data from movie service component
+// and inner data structure
+
 import { Request, Response } from 'express';
 
 import { Movie } from '../movie';

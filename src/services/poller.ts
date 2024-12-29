@@ -1,3 +1,5 @@
+// polling service, set and retrieve polls for movies
+
 import { Request, Response } from 'express';
 
 export function pollForMovie(req: Request, res: Response, pollResult: Map<string, number>): void {

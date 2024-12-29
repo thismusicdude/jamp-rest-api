@@ -5,6 +5,8 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config();
 
+// uses the Open Movie Data Base.
+// needs an API key from their website
 export class OmdbComponent extends MovieService {
     async searchMovieTitle(title: string): Promise<Movie[]> {
         const apiKey = process.env.OMDB_KEY;
@@ -22,6 +24,7 @@ export class OmdbComponent extends MovieService {
             throw new Error(movieData.Error);
         }
 
+        // retrieves the searched movie
         const movie: Movie = {
             id: movieData.imdbID as string,
             title: movieData.Title as string,

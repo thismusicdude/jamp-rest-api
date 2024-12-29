@@ -1,3 +1,6 @@
+// queues movies into the poll query
+// where users can poll on it
+
 import { Request, Response } from 'express';
 import { MovieList, PollResult } from '../types';
 import { Movie } from '../movie';

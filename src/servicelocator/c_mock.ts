@@ -1,7 +1,11 @@
 import { MovieService } from './movie_service';
 import { Movie } from '../movie';
+
+// A Component for the service Locator to use in a test environment
+// It only serves test data
 export class MockComponent extends MovieService {
     async searchMovieTitle(title: string): Promise<Movie[]> {
+        // Test Movies
         const movies: Movie[] = [
             {
                 id: 'tt1',

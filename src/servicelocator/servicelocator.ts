@@ -1,5 +1,6 @@
 import { MovieService } from './movie_service';
 
+// service locator which retrieves a specific movie service component
 export class ServiceLocator {
   component!: MovieService;
 

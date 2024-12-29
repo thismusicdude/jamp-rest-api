@@ -1,5 +1,6 @@
-import { Given, After } from '@cucumber/cucumber';
+// for stepdefinitions that use the generated open API client
 
+import { Given, After } from '@cucumber/cucumber';
 import { Configuration, DefaultApi } from '../../generated';
 
 const apiConfig = new Configuration({
@@ -23,7 +24,7 @@ interface MovieQueue {
 Given('the queued movies are empty', async () => {
     await apiClient.getPollList()
         .then((result) => {
-            // is a result received
+            // check if a result is received
             if (!result || typeof result.data === "undefined") {
                 throw new Error("No data received.");
             }

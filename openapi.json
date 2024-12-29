@@ -14,6 +14,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "getServiceInfo",
                 "summary": "Get service information",
                 "description": "Returns service information, including the current API version.",
                 "responses": {
@@ -23,6 +24,7 @@
                 }
             },
             "delete": {
+                "operationId": "clearTestEnv",
                 "summary": "Deletes inner poll data ",
                 "description": "resets and clears inner data for a new clear testsetup while using in testing mode.",
                 "responses": {
@@ -34,6 +36,7 @@
         },
         "/search": {
             "get": {
+                "operationId": "searchMovie",
                 "summary": "Search for a movie",
                 "description": "Searches for a movie by title and adds the results to the internal movie list.",
                 "parameters": [
@@ -56,6 +59,7 @@
         },
         "/movie/{id}": {
             "get": {
+                "operationId": "getMovieData",
                 "summary": "Get movie data",
                 "description": "Retrieves data for a specific movie by its ID.",
                 "parameters": [
@@ -81,6 +85,7 @@
         },
         "/pollquery": {
             "get": {
+                "operationId": "getMovieQueryList",
                 "summary": "List movies in poll query",
                 "description": "Lists all movies queued in the poll query.",
                 "responses": {
@@ -90,6 +95,7 @@
                 }
             },
             "post": {
+                "operationId": "addToMovieQueryList",
                 "summary": "Add a movie to poll query",
                 "description": "Adds a movie to the poll query.",
                 "parameters": [
@@ -113,6 +119,7 @@
                 }
             },
             "delete": {
+                "operationId": "removeFromMovieQueryList",
                 "summary": "Remove a movie from poll query",
                 "description": "Removes a movie from the poll query.",
                 "parameters": [
@@ -138,6 +145,7 @@
         },
         "/moviepoll/{id}": {
             "post": {
+                "operationId": "pollMovie",
                 "summary": "Increment poll score",
                 "description": "Increments the poll score for a specific movie.",
                 "parameters": [
@@ -161,6 +169,7 @@
                 }
             },
             "get": {
+                "operationId": "getPollScore",
                 "summary": "Get poll score",
                 "description": "Retrieves the poll score for a specific movie.",
                 "parameters": [
@@ -186,11 +195,23 @@
         },
         "/moviepoll": {
             "get": {
+                "operationId": "getPollResult",
                 "summary": "Get all poll scores",
                 "description": "Retrieves the poll scores for all movies.",
                 "responses": {
                     "200": {
-                        "description": "All poll scores."
+                        "description": "All poll scores.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "description": "Movie ID"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

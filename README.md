@@ -87,7 +87,7 @@ DEBUG="<mode>"
 
 ### Variable Explanations:
 
-- **`COMPONENT`**: Specifies the name of the API component being used. It can either be `omdb` for using the OMDB API or `mock` for using mock data. 
+- **`COMPONENT`**: Specifies the name of the API component being used. It can either be `omdb` for using the OMDB API or `mock` for using mock data. (use `mock` if running the software module tests)
 - **`OMDB_KEY`**: Your personal API key for accessing the OMDB API. Replace `<OMDB key>` with your actual API key.
 - **`DEBUG`**: Controls the debug mode. Set the value to `"TEST"` if you are running the application in a test environment. This enables a new endpoint to clear all inner data.
 

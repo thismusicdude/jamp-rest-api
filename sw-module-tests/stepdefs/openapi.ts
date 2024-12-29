@@ -1,7 +1,6 @@
 import { Given, After } from '@cucumber/cucumber';
 
 import { Configuration, DefaultApi } from '../../generated';
-import { AxiosResponse } from 'axios';
 
 const apiConfig = new Configuration({
     basePath: 'http://localhost:8080',
@@ -18,21 +17,37 @@ After({ tags: "@feature:pollquery" }, async () => {
 });
 
 interface MovieQueue {
-    queued_movies: string[]; // oder eine spezifische Typisierung, wenn du die Elemente im Array spezifizieren möchtest
+    queued_movies: string[];
 }
 
 Given('the queued movies are empty', async () => {
+    await apiClient.getPollList()
+        .then((result) => {
+            // is a result received
+            if (!result || typeof result.data === "undefined") {
+                throw new Error("No data received.");
+            }
 
-    // Beispiel für die Anpassung des Response-Typs in der Anfrage
-    const result = await apiClient.getMovieQueryList() as unknown as AxiosResponse<MovieQueue>;
+            // map object to interface to get length
+            const queue: MovieQueue = result.data;
+            const queue_length: number = queue.queued_movies.length;
 
-    if (!result.data) {
-        throw new Error("No data received.");
-    }
+            if (queue_length !== 0) {
+                throw new Error(
+                    `Queued Movie List for Poll tracking is NOT empty.\n ${JSON.stringify(queue)}`
+                );
+            }
+        })
+        .catch((error) => {
+            console.error("Error occurred during movie queue check:", error);
+            throw error;
+        });
+});
 
-    // Wenn result.data den richtigen Typ hat, verwende es
-    const queue: MovieQueue = result.data;
-    if (queue.queued_movies.length !== 0) {
-        throw new Error(`Queued Movie List for Poll tracking is NOT empty.\n ${JSON.stringify(result.data)}`);
-    }
+Given('a movie with the id {string} is pushed into poll list', async (id) => {
+    await apiClient.pushIntoPollList(id)
+        .catch((error) => {
+            console.error("Error occurred during movie queue check:", error);
+            throw error;
+        });
 });

@@ -1,3 +1,4 @@
+@feature:info
 Feature: Server Information
     Scenario: Retrieve the Server Information (successful)
         Given a GET request to "http:localhost:8080" is made

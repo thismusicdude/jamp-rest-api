@@ -85,7 +85,7 @@
         },
         "/pollquery": {
             "get": {
-                "operationId": "getMovieQueryList",
+                "operationId": "getPollList",
                 "summary": "List movies in poll query",
                 "description": "Lists all movies queued in the poll query.",
                 "responses": {
@@ -95,7 +95,7 @@
                 }
             },
             "post": {
-                "operationId": "addToMovieQueryList",
+                "operationId": "pushIntoPollList",
                 "summary": "Add a movie to poll query",
                 "description": "Adds a movie to the poll query.",
                 "parameters": [

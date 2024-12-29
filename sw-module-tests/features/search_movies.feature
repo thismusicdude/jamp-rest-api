@@ -1,5 +1,5 @@
+@feature:moviesearch
 Feature: Search for movies
-
   Scenario: Search a movie (successful)
     Given a GET request to "http:localhost:8080/search?title=grinch" is made
     When a response was returned

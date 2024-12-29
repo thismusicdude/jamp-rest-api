@@ -1,22 +1,15 @@
-// steps.js
+// for usage with pactum
+
 import pactum from 'pactum';
 import { Given, When, Then, Before } from '@cucumber/cucumber';
 import Spec from 'pactum/src/models/Spec';
+import { HttpMethod } from './types';
 
 let spec: Spec = pactum.spec();
 
 Before(() => {
   spec = pactum.spec();
 });
-
-
-
-enum HttpMethod {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  DELETE = 'DELETE'
-}
 
 // TODO: fix code duplication
 Given('a new {HTTP-REQUEST} request to {string} is made', (method: HttpMethod, url: string) => {
@@ -38,6 +31,7 @@ Given('a new {HTTP-REQUEST} request to {string} is made', (method: HttpMethod, u
   }
 });
 
+// TODO: fix code duplication
 Given('a {HTTP-REQUEST} request to {string} is made', (method: HttpMethod, url: string) => {
   switch (method) {
     case HttpMethod.GET:

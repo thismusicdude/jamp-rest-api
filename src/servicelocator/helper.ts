@@ -2,6 +2,8 @@ function capitalize (str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// this function gets a specific component Class based on a string
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getComponentClass (componentName: string): Promise<any> {
   try {

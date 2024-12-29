@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./dist/index.js",
-    "lint": "eslint . --ignore-pattern './**/*.js'"
+    "start": "tsc && node ./dist/src/index.js",
+    "lint": "eslint . --ignore-pattern './**/*.js'",
+    "generate-tests": "tsc && npx @openapitools/openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./generated",
+    "test": "cucumber-js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.1.1",
     "@eslint/js": "^9.17.0",
+    "@openapitools/openapi-generator-cli": "^2.15.3",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
@@ -23,10 +25,12 @@
     "pactum": "^3.7.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
+    "typescript-axios": "^1.0.0",
     "typescript-eslint": "^8.18.2"
   },
   "dependencies": {
     "axios": "^1.7.9",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "openapi-fetch": "^0.13.3"
   }
 }

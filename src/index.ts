@@ -18,6 +18,9 @@ const componentName = process.env.COMPONENT || 'omdb'; // Fallback to "omdb"
 // get port to bind on web service
 const port = Number(process.env.PORT) || 8080;
 
+const debug = process.env.DEBUG || 'PROD'; // Fallback to "omdb"
+
+
 const webApp = express();
 const servicelocator: ServiceLocator = new ServiceLocator();
 
@@ -80,10 +83,14 @@ function initializeListener(webApp: Express, port: number): void {
         res.status(200).send(Object.fromEntries(pollResult));
     });
 
-    // deletes every poll
-    webApp.get('/moviepoll', (req: Request, res: Response) => {
-        res.status(200).send(Object.fromEntries(pollResult));
-    });
+    if (debug == "TEST") {
+        // deletes everything poll
+        webApp.delete('/', (req: Request, res: Response) => {
+            movieList.clear();
+            pollResult.clear();
+            res.status(200).send("data was deleted for clear tests environments");
+        });
+    }
 
 
     // ########## Listener ##########

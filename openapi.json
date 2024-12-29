@@ -1,0 +1,199 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "JAMP (Just A MoviePoller) REST API",
+        "version": "0.0.0",
+        "description": "API for managing movie polls."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Get service information",
+                "description": "Returns service information, including the current API version.",
+                "responses": {
+                    "200": {
+                        "description": "Service information."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletes inner poll data ",
+                "description": "resets and clears inner data for a new clear testsetup while using in testing mode.",
+                "responses": {
+                    "200": {
+                        "description": "all data deleted."
+                    }
+                }
+            }
+        },
+        "/search": {
+            "get": {
+                "summary": "Search for a movie",
+                "description": "Searches for a movie by title and adds the results to the internal movie list.",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The movie title to search for."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search results."
+                    }
+                }
+            }
+        },
+        "/movie/{id}": {
+            "get": {
+                "summary": "Get movie data",
+                "description": "Retrieves data for a specific movie by its ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The ID of the movie."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The movie's data."
+                    },
+                    "404": {
+                        "description": "Movie not found."
+                    }
+                }
+            }
+        },
+        "/pollquery": {
+            "get": {
+                "summary": "List movies in poll query",
+                "description": "Lists all movies queued in the poll query.",
+                "responses": {
+                    "200": {
+                        "description": "List of movies."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add a movie to poll query",
+                "description": "Adds a movie to the poll query.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The ID of the movie to add."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Movie added or already queued."
+                    },
+                    "404": {
+                        "description": "Movie not found in the movie list."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove a movie from poll query",
+                "description": "Removes a movie from the poll query.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The ID of the movie to remove."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Movie successfully removed."
+                    },
+                    "404": {
+                        "description": "Movie not found in the poll query."
+                    }
+                }
+            }
+        },
+        "/moviepoll/{id}": {
+            "post": {
+                "summary": "Increment poll score",
+                "description": "Increments the poll score for a specific movie.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The ID of the movie."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Poll score incremented."
+                    },
+                    "404": {
+                        "description": "Movie not found in the poll query."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get poll score",
+                "description": "Retrieves the poll score for a specific movie.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The ID of the movie."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Poll score."
+                    },
+                    "404": {
+                        "description": "Movie not found in the poll query."
+                    }
+                }
+            }
+        },
+        "/moviepoll": {
+            "get": {
+                "summary": "Get all poll scores",
+                "description": "Retrieves the poll scores for all movies.",
+                "responses": {
+                    "200": {
+                        "description": "All poll scores."
+                    }
+                }
+            }
+        }
+    }
+}
